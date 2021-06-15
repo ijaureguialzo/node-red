@@ -38,5 +38,6 @@ clean:
 _urls:
 	${info }
 	@echo -------------------
+	@echo [Modbus TCP Server] tcp://localhost:5020
 	@echo [Node-RED] http://localhost:1880
 	@echo -------------------

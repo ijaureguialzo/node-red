@@ -3,6 +3,17 @@
 version: "3.7"
 
 services:
+
+  # REF: https://hub.docker.com/r/oitc/modbus-server
+  modbus-server:
+    container_name: modbus-server
+    image: oitc/modbus-server
+    command: -f /server_config.json
+    ports:
+      - 5020:5020
+    volumes:
+      - ./server.json:/server_config.json:ro
+
   node-red:
     image: nodered/node-red:latest
     environment:
@@ -13,6 +24,8 @@ services:
       - node-red-net
     volumes:
       - node-red-data:/data
+    depends_on:
+      - modbus-server
 
 volumes:
   node-red-data:
