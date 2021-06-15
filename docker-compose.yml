@@ -11,6 +11,8 @@ services:
     command: -f /server_config.json
     ports:
       - 5020:5020
+    networks:
+      - node-red-net
     volumes:
       - ./server.json:/server_config.json:ro
 
